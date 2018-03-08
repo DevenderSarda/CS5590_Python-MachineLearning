@@ -1,0 +1,141 @@
+Code File: 
+
+
+Task 1:
+
+dictionary_books = {"Python":80,"AngularJs":30,"C#":20,"MEAN Stack":10, "Oracle": 100}
+min = int(input("Minimum price range: "))
+max = int(input("Maximum price range: "))
+list_books = []
+for price in range(min,max+1):
+    for bookname in dictionary_books:
+        if dictionary_books[bookname] == price:
+            list_books.append(bookname)
+print("You can purchase books" , list_books)
+
+Task 2:
+
+n = int(input("No. of contacts to be added to list: "))
+contacts_list = []
+contact_dictionary = {}
+for i in range(n) :
+    contact_dictionary["name"] = input("Enter name ")
+    contact_dictionary["number"] = input("Enter number ")
+    contact_dictionary["email"] = input("Enter email ")
+    contacts_list.append(contact_dictionary.copy())
+print(contacts_list)
+def opt() :
+    x = str(input("a)Display contact by name \nb)Display contact by number \nc)Edit contact by name \nd)Exit:"))
+    return x
+
+if opt()=='a':
+    name = str(input("Enter the name: "))
+    for a in contacts_list:
+        if a['name'] == name:
+            print(a)
+if opt()=='b':
+    num = str(input("Enter the number: "))
+    for a in contacts_list:
+        if a['number'] == num:
+            print(a)
+if opt()=='c':
+    name = str(input("Enter the name: "))
+    number = int(input("Enter the number: "))
+    for index,a in enumerate(contacts_list):
+        if a['name'] == name:
+            contacts_list[index]['number']=number
+    print(contacts_list)
+if opt()=='d' :
+    exit()
+
+Task 3:
+
+# Class 1
+class Student:
+    overall_total = 0
+
+    def __init__(self):  # use of __init__ method
+        self.full_name = input('Student Name: ')
+        self.rollno = input('Roll No: ')
+        Student.overall_total += 1
+
+    def count(self):    # Defining a function inside a class
+        print('No. of students enrolled are ', Student.overall_total)
+
+    def display(self):
+        print('Student Name is ', self.full_name)
+        print('Roll No. is ', self.rollno)
+
+
+# Class 2
+
+class TransferStudent(Student):
+
+    def __init__(self):
+        super(TransferStudent, self).__init__()  # use of super() call
+        self.TransferredCredits = input('No. of credits that are transferred')
+
+
+class System:  # Class #3
+
+    def __init__(self):
+        self.TypeOfSystem = input('System Online (or) InClass: ')
+
+    def display(self):
+        print('The system the student enrolled is: ', self.TypeOfSystem)
+
+
+class Grades(TransferStudent):  # Class #4
+
+    def __init__(self, grade, credits):
+        TransferStudent.__init__(self)  # Another way of inheriting the parent class
+        self.Grades = grade
+        self.EnrolledCredits = credits
+
+    def TotalCredits(self):
+        self.TotalCreditsEnrolled = self.TransferredCredits + credits
+        print('Total no. of credits completed: ', self.TotalCreditsEnrolled)
+
+    def display(self):
+        print('Student Name is ', self.full_name)
+        print('Roll No. is ', self.rollno)
+        print('Transferred credits are: ', self.TransferredCredits)
+        print('Total number of credits enrolled: ', self.EnrolledCredits)
+        print('Grade obtained is: ', self.Grades)
+
+
+class Attendance:  # Class #5
+
+    def __init__(self, percentage):
+        self.__attendance = percentage  # Declaration of the private data member
+        if self.__attendance < 65:
+            print("Student's attendance is low")
+
+
+# Creating and calling all the classes
+
+Student_1 = Student()
+
+Student_2 = TransferStudent()
+Student_3 = TransferStudent()
+
+Student_4 = Grades("B-", "25")
+Student_5 = Grades("C", "90")
+
+Student_6 = Attendance(84)
+
+Student_5.display()
+
+Student_3.display()
+
+Student_5.count()
+Student_1.display()
+
+
+Task 4: 
+
+from random import randint
+import numpy as np
+random_array = np.random.randint(0,20, size=(15))
+print("Original array: %s"   %random_array)
+print("Most Frequent item in the list is", np.bincount(random_array).argmax())
